@@ -5,11 +5,15 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{A0A4A1C8-EF18-4069-AED6-01D718D2D20A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F8840FCF-1358-4939-8CBE-E8FD0EF96CF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F8840FCF-1358-4939-8CBE-E8FD0EF96CF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{FF2AD94C-09D1-4DC1-95F4-D93A03BD1C02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FF2AD94C-09D1-4DC1-95F4-D93A03BD1C02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{3107FE15-BAE8-4A1A-ADB3-18937EF15EA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{3107FE15-BAE8-4A1A-ADB3-18937EF15EA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1BB398CD-AFC8-4FD9-82A9-D85E8928AE58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7A59C55A-DA42-4440-8689-D6986AFE22BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0A4A1C8-EF18-4069-AED6-01D718D2D20A} = {1BB398CD-AFC8-4FD9-82A9-D85E8928AE58}
+		{F8840FCF-1358-4939-8CBE-E8FD0EF96CF2} = {1BB398CD-AFC8-4FD9-82A9-D85E8928AE58}
+		{FF2AD94C-09D1-4DC1-95F4-D93A03BD1C02} = {1BB398CD-AFC8-4FD9-82A9-D85E8928AE58}
+		{3107FE15-BAE8-4A1A-ADB3-18937EF15EA1} = {1BB398CD-AFC8-4FD9-82A9-D85E8928AE58}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFEF06D7-2E4B-48EA-A953-CFAF5A515274}
