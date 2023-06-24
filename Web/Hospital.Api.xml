@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web</name>
+    </assembly>
+    <members>
+        <member name="M:Web.Controllers.V1.DepartmentController.AddDepartment(Application.Commands.Departments.AddDepartment.AddDepartmentCommand)">
+             <summary>
+             اضافة قسم غلى النظام 
+             </summary>
+             <remarks>
+             sample Request
+             <example>
+             
+                 POST api/Department
+            
+                 {
+                     "nameArabic" : "test"   // required 
+                     "nameEnglish" : "Internal Medicine Departmnet" // required
+                     "desceprtionArabic": null, // optoinal
+                     "desceprtionEnglish": null, // optoinal
+                 }
+                
+             </example>
+             </remarks>
+             
+             <param name="command"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Web.Controllers.V1.DepartmentController.DepartmentList(Application.Queries.Departments.GetDepartmentList.GetDepartmentListQuery)">
+            <summary xml:lang="Ar">
+            الإستعلام عن الأقسام الموجودة
+            </summary>
+            <param name="query" xml:lang="Ar" >ارسال عدد الصفحات و حجمها</param>
+            <returns xml:lang="Ar">قائمة من الأقسام الموجودة</returns>
+        </member>
+        <member name="M:Web.Controllers.V1.DepartmentController.GetDepartmentById(System.Int32)">
+            <summary>
+            جلب بيانات القسم من خلال رقم المعرف 
+            </summary>
+            <param name="id">رقم المعرف الخاص في القسم </param>
+            <returns>يرجع بيانات القسم حيث تحتوي على الإسم و الوصف</returns>
+        </member>
+        <member name="M:Web.Controllers.V1.DepartmentController.GetDepartmentStatusById(System.Int32)">
+            <summary>
+            استعلام عن حالة القسم 
+            </summary>
+            <param name="id">ارسال رمز المعرف للقسم</param>
+            <returns>حالة القسم</returns>
+        </member>
+        <member name="M:Web.Controllers.V1.DepartmentController.UpdateDepartment(Application.Commands.Departments.FullyUpdateDepartment.FullyUpdateDepartmentCommand)">
+             <summary xml:lang="Ar">
+             تحديث بيانات القسم 
+             </summary>
+             <remarks>
+             sample request
+             <example>
+             
+                 Put api/Department
+            
+                 {
+                     "nameArabic" : "اسم القسم بالعربي"  // required 
+                     "nameEnglish" : "name of department in english" // required
+                     "desceprtionArabic": "وصف القسم بالعربي",  // optoinal   
+                     "desceprtionEnglish": "department desceprtion in english.", // optoinal
+                 }
+                
+             </example>
+             </remarks>
+             <param name="command"></param>
+             <returns>returen 204 if the update succesed.</returns>
+        </member>
+        <member name="M:Web.Controllers.V1.DepartmentController.DeleteDepartment(System.Int32)">
+            <summary>
+            حذف قسم 
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

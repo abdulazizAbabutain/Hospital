@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Application</name>
+    </assembly>
+    <members>
+        <member name="T:Application.Commands.Departments.AddDepartment.AddDepartmentCommand">
+            <summary>
+            يحتوي على الإسم و الوصف باللغتين لإنشاء قسم 
+            </summary>
+        </member>
+        <member name="P:Application.Commands.Departments.DeleteDepartmet.DeleteDepartmetCommand.Id">
+            <summary>
+            رقم المعرف للقسم
+            </summary>
+        </member>
+        <member name="P:Application.Commands.Departments.FullyUpdateDepartment.FullyUpdateDepartmentCommand.Id">
+            <summary>
+            رقم المعرف للقسم
+            </summary>
+        </member>
+        <member name="P:Application.Commands.Departments.UpdateStatusDepartment.UpdateStatusDepartmentCommand.Id">
+            <summary>
+            the identity fire for 
+            </summary>
+        </member>
+        <member name="P:Application.Commands.Departments.UpdateStatusDepartment.UpdateStatusDepartmentCommand.IsActive">
+            <summary>
+            send true tp change the status to true to be activae and false to be deactive.
+            </summary>
+        </member>
+        <member name="P:Application.Common.Model.EntityNameDto.NameArabic">
+            <summary>
+            الإسم بالعربية
+            </summary>
+        </member>
+        <member name="P:Application.Common.Model.EntityNameDto.NameEnglish">
+            <summary>
+            الإسم بالنجليزية
+            </summary>
+        </member>
+        <member name="P:Application.Common.Model.EntityNameDto.DescriptionArabic">
+            <summary>
+            الوصف باللغة العربية
+            </summary>
+        </member>
+        <member name="P:Application.Common.Model.EntityNameDto.DescriptionEnglish">
+            <summary>
+            الوصف باللغة الإنجليزية
+            </summary>
+        </member>
+        <member name="T:Application.Queries.Departments.CommonDto.DepartmentDto">
+            <summary>
+            يحتوي على رقم المعرف للقسم و الإسم و الوصف للغتين العربية و الإنجليزية
+            </summary>
+        </member>
+        <member name="P:Application.Queries.Departments.CommonDto.DepartmentDto.Id">
+            <summary xml:lan="Ar">
+            رقم المعرف بالقسم
+            </summary>
+        </member>
+        <member name="P:Application.Queries.Departments.CommonDto.DepartmentDto.Name">
+            <summary>
+            عرض الإسم والوصف
+            </summary>
+        </member>
+        <member name="P:Application.Queries.Departments.CommonDto.DepartmentDto.Status">
+            <summary>
+            عرض حالة القسم 
+            </summary>
+        </member>
+        <member name="P:Application.Queries.Departments.GetDepartmentList.GetDepartmentListQuery.PageNumber">
+            <summary  xml:lang="En">
+            Send the Page Number the defult size is 1.
+            </summary>
+            <summary xml:lang="Ar">
+             ارسال رقم الصفحة المطلوبة,اذا لم يتم اسناد قيمة ستكون قيمتها الإفتراضية 1
+            </summary>
+        </member>
+        <member name="P:Application.Queries.Departments.GetDepartmentList.GetDepartmentListQuery.PageSize">
+            <summary  xml:lang="En">
+            send an number of item in one page, the defult size is 10,
+            </summary>
+            <summary  xml:lang="Ar">
+            ارسا حجم البيانات المطلوبة
+            </summary>
+        </member>
+        <member name="T:Application.Queries.Departments.GetDepartmentStatus.GetDepartmentStatusQuery">
+            <summary xml:lang="Ar">
+            ارسال طلب لإستعلام عن حالة القسم
+            </summary>
+        </member>
+        <member name="P:Application.Queries.Departments.GetDepartmentStatus.GetDepartmentStatusQuery.Id">
+            <summary xml:lang="Ar">
+            العنوان المعرف للقسم
+            </summary>
+        </member>
+    </members>
+</doc>
