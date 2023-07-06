@@ -15,6 +15,7 @@ namespace Infrastructure.Persistence
         public DbSet<Department> Department => Set<Department>();
         public DbSet<EntityStatus> EntityStatus => Set<EntityStatus>();
         public DbSet<EmployeePosition> EmployeePosition => Set<EmployeePosition>();
+        public DbSet<Employee> Employee => Set<Employee>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

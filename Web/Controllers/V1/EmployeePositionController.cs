@@ -1,24 +1,30 @@
 ﻿using Application.Commands.EmployeePositions.AddEmployeePosition;
+using Application.Queries.EmployeePostions.GetListEmployeePostion;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Web.Common.Extenstions;
 
 namespace Web.Controllers.V1
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class EmployeePositionController : ControllerBase
+    public class EmployeePositionController : RootConstroler
     {
-        private readonly IMediator _mediator;
-
-        public EmployeePositionController(IMediator mediator)
+        public EmployeePositionController(IMediator mediator) 
+            : base(mediator)
         {
-            _mediator = mediator;
         }
+
         [HttpPost]
         public async Task<IActionResult> AddEmployeePosition(AddEmployeePositionCommand command)
         {
             await _mediator.Send(command);
             return Ok();
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetEmployeePositionList([FromQuery]GetListEmployeePostionQuery query)
+        {
+            var result = await _mediator.Send(query);
+            HttpContext.Response.AddPagantionHeaders(result.metaData);
+            return Ok(result.list);
         }
     }
 }

@@ -3,7 +3,7 @@ using Application.Commands.Departments.DeleteDepartmet;
 using Application.Commands.Departments.FullyUpdateDepartment;
 using Application.Commands.Departments.UpdateStatusDepartment;
 using Application.Common.Model;
-using Application.Queries.Departments.CommonDto;
+using Application.Queries.CommonModle;
 using Application.Queries.Departments.GetDepartment;
 using Application.Queries.Departments.GetDepartmentList;
 using Application.Queries.Departments.GetDepartmentStatus;
@@ -50,7 +50,7 @@ namespace Web.Controllers.V1
         {
             var deepartment = await mediator.Send(command);
             // will change to redirect method. 
-            return CreatedAtAction(nameof(GetDepartmentById),new { id = deepartment.Id});
+            return CreatedAtAction(nameof(GetDepartmentById),new { id = deepartment.Id}, deepartment);
         }
         /// <summary xml:lang="Ar">
         /// الإستعلام عن الأقسام الموجودة
@@ -58,7 +58,7 @@ namespace Web.Controllers.V1
         /// <param name="query" xml:lang="Ar" >ارسال عدد الصفحات و حجمها</param>
         /// <returns xml:lang="Ar">قائمة من الأقسام الموجودة</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<DepartmentDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<QueryModel>), StatusCodes.Status200OK)]
         public async Task<IActionResult> DepartmentList([FromQuery] GetDepartmentListQuery query)
         {
             var result = await mediator.Send(query);
@@ -72,7 +72,7 @@ namespace Web.Controllers.V1
         /// <returns>يرجع بيانات القسم حيث تحتوي على الإسم و الوصف</returns>
         [HttpGet("{id}",Name = nameof(GetDepartmentById))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<DepartmentDto>> GetDepartmentById([FromRoute] int id)
+        public async Task<ActionResult<QueryModel>> GetDepartmentById([FromRoute] int id)
         {
             var result = await mediator.Send(new GetDepartmentQuery { Id = id });
             if (result == null)

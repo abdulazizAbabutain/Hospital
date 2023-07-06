@@ -116,6 +116,79 @@ namespace Infrastructure.Migrations
                     b.ToTable("Department");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("BaseSalry")
+                        .HasColumnType("float");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DeactivatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTimeOffset>("DeleteDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsConsulttant")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset>("LastActivateeDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("LastDeactivateDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LastModifBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTimeOffset>("LastModifyDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int?>("PositionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
+
+                    b.Property<int?>("SupervisorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("PositionId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("SupervisorId");
+
+                    b.ToTable("Employee");
+                });
+
             modelBuilder.Entity("Domain.Entities.EmployeePosition", b =>
                 {
                     b.Property<int>("Id")
@@ -172,7 +245,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Common.EntityStatus", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.OwnsOne("Domain.Entities.ShortName", "Name", b1 =>
@@ -216,12 +289,106 @@ namespace Infrastructure.Migrations
                     b.Navigation("Status");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Employee", b =>
+                {
+                    b.HasOne("Domain.Entities.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.EmployeePosition", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Common.EntityStatus", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Employee", "Supervisor")
+                        .WithMany()
+                        .HasForeignKey("SupervisorId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.OwnsOne("Domain.Entities.NameDetails", "Name", b1 =>
+                        {
+                            b1.Property<int>("EmployeeId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("FirstNameArabic")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("FirstNameArabic");
+
+                            b1.Property<string>("FirstNameEnglish")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("FirstNameEnglish");
+
+                            b1.Property<string>("LastNameArabic")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("LastNameArabic");
+
+                            b1.Property<string>("LastNameEnglish")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("LastNameEnglish");
+
+                            b1.Property<string>("SecondNameArabic")
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("SecondNameArabic");
+
+                            b1.Property<string>("SecondNameEnglish")
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("SecondNameEnglish");
+
+                            b1.Property<string>("ThirdNameArabic")
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("ThirdNameArabic");
+
+                            b1.Property<string>("ThirdNameEnglish")
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)")
+                                .HasColumnName("ThirdNameEnglish");
+
+                            b1.HasKey("EmployeeId");
+
+                            b1.ToTable("Employee");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EmployeeId");
+                        });
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Name")
+                        .IsRequired();
+
+                    b.Navigation("Position");
+
+                    b.Navigation("Status");
+
+                    b.Navigation("Supervisor");
+                });
+
             modelBuilder.Entity("Domain.Entities.EmployeePosition", b =>
                 {
                     b.HasOne("Domain.Common.EntityStatus", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.OwnsOne("Domain.Entities.ShortName", "Name", b1 =>

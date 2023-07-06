@@ -18,7 +18,7 @@ namespace Application.Commands.EmployeePositions.AddEmployeePosition
             var newEmployeePosition = EmployeePosition.Create(req.NameArabic, req.NameEnglish);
             newEmployeePosition.Name.SetDescriptions(req.DescriptionArabic, req.DescriptionEnglish);
             await _repositoryManager.EmployeePositionRepository.AddAsync(newEmployeePosition, cancellationToken);
-            _repositoryManager.SaveAsync(cancellationToken);
+            await _repositoryManager.SaveAsync(cancellationToken);
 
         }
     }

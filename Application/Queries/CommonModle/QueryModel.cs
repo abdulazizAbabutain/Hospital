@@ -3,12 +3,13 @@ using Application.Common.Model;
 using AutoMapper;
 using Domain.Entities;
 
-namespace Application.Queries.Departments.CommonDto
+namespace Application.Queries.CommonModle
 {
     /// <summary>
-    /// يحتوي على رقم المعرف للقسم و الإسم و الوصف للغتين العربية و الإنجليزية
+    /// يحتوي على رقم المعرف للكيان و الإسم و الوصف للغتين العربية و الإنجليزية
     /// </summary>
-    public class DepartmentDto : IMapForm<Department>
+    public class QueryModel : IMapForm<Department>, 
+        IMapForm<EmployeePosition>
     {
         /// <summary xml:lan="Ar">
         /// رقم المعرف بالقسم
@@ -21,6 +22,6 @@ namespace Application.Queries.Departments.CommonDto
         /// <summary>
         /// عرض حالة القسم 
         /// </summary>
-        public LookupDto Status { get; set; }  
+        public LookupDto Status { get; set; }
     }
 }

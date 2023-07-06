@@ -13,7 +13,7 @@ namespace Infrastructure
             services.AddDbContext<ApplicationContext>(option =>
             {
                 //option.UseSqlite("Data Source=mydb.db;");
-                option.UseSqlServer("Server=.;Database=HospitalAppDb; User Id=sa;Password=123;TrustServerCertificate=True");
+                option.UseSqlServer("Server=.;Database=HospitalAppDb;Trusted_Connection=True; TrustServerCertificate=True");
                 option.LogTo(Console.WriteLine);
             });
 

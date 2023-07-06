@@ -1,5 +1,5 @@
 ﻿using Application.Common.Model;
-using Application.Queries.Departments.CommonDto;
+using Application.Queries.CommonModle;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Application.Commands.Departments.AddDepartment
     /// <summary>
     /// يحتوي على الإسم و الوصف باللغتين لإنشاء قسم 
     /// </summary>
-    public class AddDepartmentCommand : IRequest<DepartmentDto>
+    public class AddDepartmentCommand : IRequest<QueryModel>
     {
         public EntityNameDto Name { get; set; }
     }

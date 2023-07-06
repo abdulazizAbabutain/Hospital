@@ -49,22 +49,22 @@
             الوصف باللغة الإنجليزية
             </summary>
         </member>
-        <member name="T:Application.Queries.Departments.CommonDto.DepartmentDto">
+        <member name="T:Application.Queries.CommonModle.QueryModelDto">
             <summary>
-            يحتوي على رقم المعرف للقسم و الإسم و الوصف للغتين العربية و الإنجليزية
+            يحتوي على رقم المعرف للكيان و الإسم و الوصف للغتين العربية و الإنجليزية
             </summary>
         </member>
-        <member name="P:Application.Queries.Departments.CommonDto.DepartmentDto.Id">
+        <member name="P:Application.Queries.CommonModle.QueryModelDto.Id">
             <summary xml:lan="Ar">
             رقم المعرف بالقسم
             </summary>
         </member>
-        <member name="P:Application.Queries.Departments.CommonDto.DepartmentDto.Name">
+        <member name="P:Application.Queries.CommonModle.QueryModelDto.Name">
             <summary>
             عرض الإسم والوصف
             </summary>
         </member>
-        <member name="P:Application.Queries.Departments.CommonDto.DepartmentDto.Status">
+        <member name="P:Application.Queries.CommonModle.QueryModelDto.Status">
             <summary>
             عرض حالة القسم 
             </summary>
@@ -93,6 +93,22 @@
         <member name="P:Application.Queries.Departments.GetDepartmentStatus.GetDepartmentStatusQuery.Id">
             <summary xml:lang="Ar">
             العنوان المعرف للقسم
+            </summary>
+        </member>
+        <member name="P:Application.Queries.EmployeePostions.GetListEmployeePostion.GetListEmployeePostionQuery.PageNumber">
+            <summary  xml:lang="En">
+            Send the Page Number the defult size is 1.
+            </summary>
+            <summary xml:lang="Ar">
+             ارسال رقم الصفحة المطلوبة,اذا لم يتم اسناد قيمة ستكون قيمتها الإفتراضية 1
+            </summary>
+        </member>
+        <member name="P:Application.Queries.EmployeePostions.GetListEmployeePostion.GetListEmployeePostionQuery.PageSize">
+            <summary  xml:lang="En">
+            send an number of item in one page, the defult size is 10,
+            </summary>
+            <summary  xml:lang="Ar">
+            ارسا حجم البيانات المطلوبة
             </summary>
         </member>
     </members>

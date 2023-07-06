@@ -10,6 +10,7 @@ namespace Application.Common.Repositories
     {
         IDepartmentRepository DepartmentRepository { get; }
         IEmployeePositionRepository EmployeePositionRepository { get; }
+        IEmployeeRepository EmployeeRepository { get; }
         Task SaveAsync(CancellationToken cancellationToken); 
     }
 }

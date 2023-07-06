@@ -2,13 +2,14 @@
 using Application.Common.Model;
 using Application.Common.Repositories;
 using Application.Queries.CommonModle;
+using Application.Queries.Departments.GetDepartmentList;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 
-namespace Application.Queries.Departments.GetDepartmentList
+namespace Application.Queries.EmployeePostions.GetListEmployeePostion
 {
-    public class GetDepartmentListQuery : 
+    public class GetListEmployeePostionQuery : 
         IRequest<(PaginatedList<QueryModel> list, MetaData metaData)>
     {
         /// <summary  xml:lang="En">
@@ -24,26 +25,25 @@ namespace Application.Queries.Departments.GetDepartmentList
         /// <summary  xml:lang="Ar">
         /// ارسا حجم البيانات المطلوبة
         /// </summary>
-        public int PageSize { get; set; } = 10; 
+        public int PageSize { get; set; } = 10;
     }
-
-    public class GetDepartmentListQueryHandler : IRequestHandler<GetDepartmentListQuery, (PaginatedList<QueryModel> list, MetaData metaData)>
+    public class GetListEmployeePostionQueryHandler : IRequestHandler<GetListEmployeePostionQuery, (PaginatedList<QueryModel> list, MetaData metaData)>
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public GetDepartmentListQueryHandler(IRepositoryManager repositoryManager, IMapper mapper)
+        public GetListEmployeePostionQueryHandler(IRepositoryManager repositoryManager, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }
-        public async Task<(PaginatedList<QueryModel> list, MetaData metaData)> Handle(GetDepartmentListQuery request, CancellationToken cancellationToken)
+        public async Task<(PaginatedList<QueryModel> list, MetaData metaData)> Handle(GetListEmployeePostionQuery request, CancellationToken cancellationToken)
         {
-           var result = await _repositoryManager.DepartmentRepository
-                .Get(trackChanges: false)
-                .ProjectTo<QueryModel>(_mapper.ConfigurationProvider)
-                .PaginatedListAsync(request.PageNumber, request.PageSize, cancellationToken);
-            return (result, result.MetaData); 
+            var result = await _repositoryManager.EmployeePositionRepository
+                 .Get(trackChanges: false)
+                 .ProjectTo<QueryModel>(_mapper.ConfigurationProvider)
+                 .PaginatedListAsync(request.PageNumber, request.PageSize, cancellationToken);
+            return (result, result.MetaData);
         }
     }
 }

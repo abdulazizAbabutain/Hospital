@@ -43,10 +43,10 @@ namespace Infrastructure.Repositories
         }
         public void Update(T entity)
             => _context.Entry(entity).State = EntityState.Modified; 
-        public Task<bool> IsExistsAync(Expression<Func<T, bool>> expression, CancellationToken cancellation = default)
+        public async Task<bool> IsExistsAync(Expression<Func<T, bool>> expression, CancellationToken cancellation = default)
         {
-           var query = _context.Set<T>().AsQueryable<T>();
-            return query.AnyAsync(cancellation);
+           var query = await _context.Set<T>().AsQueryable<T>().AnyAsync(expression, cancellation);
+            return query;
         }
     }
 }

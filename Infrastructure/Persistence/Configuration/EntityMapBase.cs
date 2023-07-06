@@ -36,8 +36,11 @@ namespace Infrastructure.Persistence.Configuration
 
             builder.HasQueryFilter(x => x.StatusId != (int)StatusEnum.Deleted);
 
-            builder.HasOne(rel => rel.Status).WithMany().HasForeignKey(x => x.StatusId)
-                    .IsRequired();
+            builder.HasOne(rel => rel.Status)
+                .WithMany()
+                .HasForeignKey(x => x.StatusId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
         }
     }
 }
